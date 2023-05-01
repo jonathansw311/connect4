@@ -1,3 +1,6 @@
+
+ 
+
 /** Connect Four
  *
  * Player 1 and 2 alternate turns. On each turn, a piece is dropped down a
@@ -9,25 +12,41 @@ const WIDTH = 7;
 const HEIGHT = 6;
 
 let currPlayer = 1; // active player: 1 or 2
-const board = [
-  [ null, null, null, null, null, null, null ],
-  [ null, null, null, null, null, null, null ],
-  [ null, null, null, null, null, null, null ],
-  [ null, null, null, null, null, null, null ],
-  [ null, null, null, null, null, null, null ],
-  [ null, null, null, null, null, null, null ],
-]; // array of rows, each row is array of cells  (board[y][x])
-console.log(board);
+let board = makeBoard2(); 
+
 /** makeBoard: create in-JS board structure:
  *    board = array of rows, each row is array of cells  (board[y][x])
  */
+//makeBoard dynamically fills the board array
+function makeBoard2(){
+     let aboard2=[];
+    for (h=0; h<HEIGHT; h++){
+       aboard2.push([0])
+    for(w = 0; w< WIDTH; w++){
+     aboard2[h][w]=null;
+    }
+}
+return aboard2;
+}
 
+//the below function is not used and probably should
+//be delete as some point
 function makeBoard() {
-  // TODO: set "board" to empty HEIGHT x WIDTH matrix array
+   
+ // console.log(`board 2 ${board2}`);
+  
+    // TODO: set "board" to empty HEIGHT x WIDTH matrix array
 // just using the static board array to get us up and running will change to dynamic later
 
-  //const board = 
- 
+const board =[
+    [ null, null, null, null, null, null, null ],
+    [ null, null, null, null, null, null, null ],
+    [ null, null, null, null, null, null, null ],
+    [ null, null, null, null, null, null, null ],
+    [ null, null, null, null, null, null, null ],
+    [ null, null, null, null, null, null, null ],
+  ]; // array of rows, each row is array of cells  (board[y][x])
+ return board;
 }
 
 /** makeHtmlBoard: make HTML table and row of column tops. */
@@ -65,7 +84,7 @@ function makeHtmlBoard() {
 
 function findSpotForCol(x) {
   // TODO: write the real version of this, rather than always returning 0
-  for (let y=5; y>=0; y--){//runs a loop starting from the bottom the the column
+  for (let y=HEIGHT-1; y>=0; y--){//runs a loop starting from the bottom the the column
         if (board[y][x]=== null){//if the column at in row is null, that is the next open postion in the board
       return y;//the specific row is returned
     }
@@ -78,7 +97,7 @@ function findSpotForCol(x) {
 
 function placeInTable(y, x) {
   const playBoard = document.getElementById(y+'-'+x);// added the query selector to get where we want to place the playing piece
-  console.log(playBoard);
+
   // TODO: make a div and insert into correct table cell
   const piece = document.createElement("div")//creats a div for the piece
   piece.setAttribute('class', "piece p"+currPlayer);//adds class of piece and current play for css
@@ -194,7 +213,4 @@ function check(){
   };
 
 }
-
-
-  
 

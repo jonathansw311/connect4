@@ -1,64 +1,61 @@
 /* game board table */
 #container {
-  position:absolute;
- 
-width: 800px;
-border-color: black;
-border-width: 1px;
-border-style: none;
-top: 199px;
-align-items: center;
-}
-#board td {
-  width: 100px;
-  height: 100px;
+    display: flex;
+    justify-content: center;
+  }
+  #board td {
+    width: 100px;
+    height: 100px;
+    
+    
+  }
   
+  /* pieces are div within game table cells: draw as colored circles */
   
-}
+  .piece {
+    /* TODO: make into circles // done with border radius*/
+    margin: 5px;
+    width: 80%;
+    height: 80%;
+    border: solid 1px #666;
+    border-radius: 50%; 
+  }
+  
+  .p1{
 
-/* pieces are div within game table cells: draw as colored circles */
-
-.piece {
-  /* TODO: make into circles // done with border radius*/
-  margin: 5px;
-  width: 80%;
-  height: 80%;
-  border: solid 1px #666;
+    transform: translateY(0px);
+    transition: 2s;
+    background-color: red;
+  }
+  
+  .p2{
+    background-color: blue;
+  }
+  
+  /* TODO: make pieces red/blue,  depending on player 1/2 piece */
+  
+  /* column-top is table row of clickable areas for each column */
+  
+  .pl1  {
+    border-color: none;
+  }
+  
+   .pl2 td:hover {
+    border-color: none;
+    background-color: blue;
   border-radius: 50%; 
-}
-
-.p1{
-  background-color: red;
-}
-
-.p2{
-  background-color: blue;
-}
-
-/* TODO: make pieces red/blue,  depending on player 1/2 piece */
-
-/* column-top is table row of clickable areas for each column */
-
-.pl1  {
   border-color: none;
-}
-
- .pl2 td:hover {
-  border-color: none;
-  background-color: blue;
-border-radius: 50%; 
-border-color: none;
-}
-
- .pl1 td:hover  {
-background-color: red;
-border-radius: 50%; 
-border-color: none;
-}
+  }
   
-
-
-.gBoard{
-  border: solid 1px #666;
-  border-radius: 8%;
-}
+   .pl1 td:hover  {
+  background-color: red;
+  border-radius: 50%; 
+  border-color: none;
+  }
+    
+  
+  
+  .gBoard{
+    border: solid 1px #666;
+    border-radius: 8%;
+  }
