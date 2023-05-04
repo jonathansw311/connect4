@@ -31,10 +31,7 @@ return aboard2;
 //the below function is not used and probably should
 //be delete as some point
 function makeBoard() {
-   
-
 // just using the static board array to get us up and running will change to dynamic later
-
 const board =[
     [ null, null, null, null, null, null, null ],
     [ null, null, null, null, null, null, null ],
@@ -154,22 +151,19 @@ tog.classList.add('pl1');}
   // TODO: add line to update in-memory board
   placeInTable(y, x);
   board[y][x]=currPlayer;
-  check();
-  // check for tie
+  check();// looks to see if we have a winner
+ 
   // TODO: check if all cells in board are filled; if so call, call endGame
 const flattened = board.flat();//flatens the array into one easy to read array
   
       filled = flattened.every(function (flat){//this checks to see if the board is 100% full
       return flat !== null;
          })
-   
 
-  if(filled){endGame(filled)};//if game board is full the game ends as a tie
+         if(filled){endGame(filled)};//if game board is full the game ends as a tie
 
 // check for win
-  
 
- 
    swapPlayers();// switch players
   // TODO: switch currPlayer 1 <-> 2
 }
@@ -216,6 +210,8 @@ console.log(`current player is ${currPlayer}`);
 makeHtmlBoard();//creates html board
 initScore();//initializes scoreboard
 
+
+//the check function is called in the click event function whenever a new piece is placed
 function check(){
   if (checkForWin()) {//checks for win here.  if check for win comes back true it ends the game
    
